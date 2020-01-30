@@ -17,9 +17,6 @@ AGENT JOBS
 
 ## About-Process
 
-
-
-![CONFIRM NETBACKUP VERIFICATION WITH SQL]( HTTPS://MIKESDATAWORK.FILES.WORDPRESS.COM/2018/07/IMAGE0012.PNG "CONFIRM NETBACKUP VERIFICATION WITH SQL")
  
 <p>You can get a list of all the files that Netbackup has successfully copied by using the BPLIST utility. Ordinarilly this is run from Powershell or Command prompt, but it can be run using SQL, and the results can be pulled into a table, and you can build a process around it if needed. Thats exactly what I did here. </p>   
  
