@@ -1,3 +1,6 @@
+> **Note** — The folder `linguist-samples/` contains tiny real files so GitHub can correctly display all languages used in this repo.  
+> The actual content and examples remain in this README.
+
 ![Mikes Data Work Git](https://raw.githubusercontent.com/mikesdatawork/images/master/git_mikes_data_work_banner_01.png "Mikes Data Work")
 AGENT JOBS
 
@@ -23,7 +26,7 @@ AGENT JOBS
    
 ## SQL-Logic
 ```SQL
-1	exec master..xp_cmdshell 'C:\NetBackupList\bplist -R 99 -C MyServerName.MyDomain.com -s 06/23/2018 00:00:00 -e 07/24/2018 00:00:00 -I "F:\BACKUPS"'
+1	exec master..xp_cmdshell 'C:\NetBackupListplist -R 99 -C MyServerName.MyDomain.com -s 06/23/2018 00:00:00 -e 07/24/2018 00:00:00 -I "F:\BACKUPS"'
 
 ```
 
@@ -32,7 +35,7 @@ In order for this backup process to work you'll need to copy the Netbackup BPLIS
 You can see the BPLIST.exe utility (in red) along with all the DLL's (in blue). Again; you can use any folder you want, but it would be much easier if it's a root folder, and the folder name has no spaced. This probably shouldn't be in Drive C:, but in this example it works well.
 
 In this example; the BPLIST utility is found here under:
-C:\Program Files\VERITAS\NetBackup\bin
+C:\Program Files\VERITAS\NetBackupin
 
  
 Here's all the files you'll need to copy in order for the BPLIST.exe utility to work.
@@ -89,7 +92,7 @@ order by    bs.database_name,   bs.backup_finish_date desc
 declare @bplist_all     table ([bp_commands] varchar(max))
 insert into @bplist_all
 select distinct
-'insert into ##netbackup_confirmed exec master..xp_cmdshell ''C:\NetBackupList\bplist -R 99 -C ' + @fqdn_server_name + ' -s ' + @30_days + ' -e ' + @tomorrow + ' -I "' + reverse(stuff(reverse([location]), 1, 1, ''))  + '"'''
+'insert into ##netbackup_confirmed exec master..xp_cmdshell ''C:\NetBackupListplist -R 99 -C ' + @fqdn_server_name + ' -s ' + @30_days + ' -e ' + @tomorrow + ' -I "' + reverse(stuff(reverse([location]), 1, 1, ''))  + '"'''
 from @backup_history
  
 -- execute Netbackup BPLIST utility across all unique backup paths gathering all confirmed files copied to enterprise storage and place them into table ##netbackup_confirmed.
@@ -138,4 +141,3 @@ exec    (@delete_files)
 [![LicenseCCSA](https://img.shields.io/badge/License-CreativeCommonsSA-<COLOR>.svg)](https://creativecommons.org/share-your-work/licensing-types-examples/)
 
 ![Mikes Data Work](https://raw.githubusercontent.com/mikesdatawork/images/master/git_mikes_data_work_banner_02.png "Mikes Data Work")
-
